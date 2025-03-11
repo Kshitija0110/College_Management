@@ -28,7 +28,23 @@ const Body = () => {
 
   useEffect(() => {
     if (Object.keys(store.errors).length !== 0) {
-      setError(store.errors);
+      // Convert any object errors to strings before setting in state
+      const processedErrors = {};
+      
+      Object.keys(store.errors).forEach(key => {
+        if (typeof store.errors[key] === 'object' && store.errors[key] !== null) {
+          // Handle MongoDB errors - typically has code, keyPattern properties
+          if (store.errors[key].code === 11000) {
+            processedErrors[key] = "This entry already exists in the database";
+          } else {
+            processedErrors[key] = store.errors[key].message || JSON.stringify(store.errors[key]);
+          }
+        } else {
+          processedErrors[key] = store.errors[key];
+        }
+      });
+      
+      setError(processedErrors);
       setValue({ ...value, email: "" });
     }
   }, [store.errors]);
@@ -234,10 +250,13 @@ const Body = () => {
                 />
               )}
               {(error.emailError || error.backendError) && (
-                <p className="text-red-500">
-                  {error.emailError || error.backendError}
-                </p>
-              )}
+  <p className="text-red-500">
+    {typeof error.emailError === 'object' ? 
+      "Email already exists" : error.emailError}
+    {typeof error.backendError === 'object' ? 
+      "An error occurred on the server" : error.backendError}
+  </p>
+)}
             </div>
           </form>
         </div>

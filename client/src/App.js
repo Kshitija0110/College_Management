@@ -7,6 +7,8 @@ import AddStudent from "./components/admin/addStudent/AddStudent";
 import AddSubject from "./components/admin/addSubject/AddSubject";
 import AdminHome from "./components/admin/AdminHome";
 
+
+import CollegeManagementHomepage from "./components/homepage/home";
 import GetFaculty from "./components/admin/getFaculty/GetFaculty";
 import GetStudent from "./components/admin/getStudent/GetStudent";
 import GetSubject from "./components/admin/getSubject/GetSubject";
@@ -46,7 +48,8 @@ import CreateNotice from "./components/admin/createNotice/CreateNotice";
 const App = () => {
   return (
     <Routes>
-      <Route exact path="/" element={<Login />} />
+      <Route exact path="/" element={<CollegeManagementHomepage />} />
+      <Route path="/login" element={<Login />} />
 
       {/* Admin  */}
 
@@ -73,6 +76,9 @@ const App = () => {
       <Route path="/admin/addsubject" element={<AddSubject />} />
       <Route path="/admin/allsubject" element={<GetSubject />} />
       <Route path="/admin/allstudent" element={<GetStudent />} />
+      <Route path="/login/adminlogin" element={<AdminLogin />} />
+      <Route path="/login/studentlogin" element={<StudentLogin />} />
+      <Route path="/login/facultylogin" element={<FacultyLogin />} />
 
       {/* Faculty  */}
 
