@@ -140,8 +140,14 @@ export const updateStudent = async (req, res) => {
 export const testResult = async (req, res) => {
   try {
     const { department, year, section } = req.body;
+    if (!department || !year || !section) {
+      return res.status(400).json({ error: "Missing required parameters" });
+    }
     const errors = { notestError: String };
     const student = await Student.findOne({ department, year, section });
+    if (!student) {
+      return res.status(404).json({ error: "Student not found" });
+    }
     const test = await Test.find({ department, year, section });
     if (test.length === 0) {
       errors.notestError = "No Test Found";

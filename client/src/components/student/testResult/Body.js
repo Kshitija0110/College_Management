@@ -27,15 +27,31 @@ const Body = () => {
 
   const subjects = useSelector((state) => state.admin.subjects.result);
 
+  
   useEffect(() => {
-    if (subjects?.length !== 0) setLoading(false);
-  }, [subjects]);
+    // Fetch subjects if not already loaded
+    if (!subjects || subjects.length === 0) {
+      dispatch(getSubject());
+    } else {
+      setLoading(false);
+    }
+  }, [subjects, dispatch]);
+
+  useEffect(() => {
+    // Set loading to false when testResult is loaded
+    if (testResult !== undefined) {
+      setLoading(false);
+    }
+  }, [testResult]);
 
   useEffect(() => {
     dispatch({ type: SET_ERRORS, payload: {} });
-  }, []);
-
+  }, [dispatch]);
+  
+  // Add this to Body.js in the testResult component
+console.log("Test Results:", testResult);
   return (
+    // Add this to Body.js in the testResult component
     <div className="flex-[0.8] mt-3">
       <div className="space-y-5">
         <div className="flex text-gray-400 items-center space-x-2">
