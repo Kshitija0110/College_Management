@@ -1,1 +1,4 @@
-College Management Website
+Team Name : Knight_Photons
+
+Hackathon : HackNova 
+
