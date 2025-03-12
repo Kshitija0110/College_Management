@@ -76,17 +76,17 @@ const Body = () => {
       <div className="space-y-5">
         <div className="flex text-gray-400 items-center space-x-2">
           <AddIcon />
-          <h1>Create Test</h1>
+          <h1>Create Assignment</h1>
         </div>
         <div className=" mr-10 bg-white flex flex-col rounded-xl ">
           <form className={classes.adminForm0} onSubmit={handleSubmit}>
             <div className={classes.adminForm1}>
               <div className={classes.adminForm2l}>
                 <div className={classes.adminForm3}>
-                  <h1 className={classes.adminLabel}>Test Name :</h1>
+                  <h1 className={classes.adminLabel}>Assignment Name :</h1>
 
                   <input
-                    placeholder="Test Name"
+                    placeholder="Assignment Name"
                     required
                     className={classes.adminInput}
                     type="text"
@@ -215,7 +215,7 @@ const Body = () => {
             <div className={classes.loadingAndError}>
               {loading && (
                 <Spinner
-                  message="Creating Test"
+                  message="Creating Assignment"
                   height={30}
                   width={150}
                   color="#111111"

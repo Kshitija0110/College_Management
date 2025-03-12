@@ -58,7 +58,7 @@ const Sidebar = () => {
               isActive ? isActiveStyle : isNotActiveStyle
             }>
             <AddIcon className="" />
-            <h1 className="font-normal">Create Test</h1>
+            <h1 className="font-normal">Create Assignment</h1>
           </NavLink>
           <NavLink
             to="/faculty/uploadmarks"

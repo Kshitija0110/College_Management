@@ -122,7 +122,7 @@ export const createTest = async (req, res) => {
       test,
     });
     if (existingTest) {
-      errors.testError = "Given Test is already created";
+      errors.testError = "Given Assignment is already created";
       return res.status(400).json(errors);
     }
 
@@ -140,7 +140,7 @@ export const createTest = async (req, res) => {
     const students = await Student.find({ department, year, section });
     return res.status(200).json({
       success: true,
-      message: "Test added successfully",
+      message: "Assignment added successfully",
       response: newTest,
     });
   } catch (error) {

@@ -61,7 +61,7 @@ const Body = () => {
                 sx={{ fontSize: 40 }}
               />
               <div className="flex flex-col">
-                <h1>Test</h1>
+                <h1>Assignment</h1>
                 <h2 className="text-2xl font-bold">3</h2>
               </div>
             </div>
