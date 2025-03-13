@@ -47,6 +47,8 @@ import CreateNotice from "./components/admin/createNotice/CreateNotice";
 // import Upload from "./components/student/upload/UploadAssignment";
 // import UploadAssignment from "./components/student/upload/Body";
 import Upload from "./components/student/upload/Upload";
+import EduGuru from "./components/student/eduguru/Eduguru";
+
 
 const App = () => {
   return (
@@ -107,6 +109,7 @@ const App = () => {
       <Route path="/student/testresult" element={<TestResult />} />
       <Route path="/student/attendance" element={<Attendance />} /> 
       <Route path="/student/upload" element={<Upload />} /> 
+      <Route path="/student/eduguru" element={<EduGuru />} />
     </Routes>
   );
 };

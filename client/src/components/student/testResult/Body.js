@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSubject } from "../../../redux/actions/adminActions";
 import { MenuItem, Select } from "@mui/material";
 import Spinner from "../../../utils/Spinner";
-import { SET_ERRORS } from "../../../redux/actionTypes";
+import { SET_ERRORS, TEST_RESULT } from "../../../redux/actionTypes";
 import * as classes from "../../../utils/styles";
 
 const Body = () => {
@@ -45,7 +45,7 @@ const Body = () => {
   }, [testResult]);
 
   useEffect(() => {
-    dispatch({ type: SET_ERRORS, payload: {} });
+    dispatch({ type: TEST_RESULT, payload: {} });
   }, [dispatch]);
   
   // Add this to Body.js in the testResult component
