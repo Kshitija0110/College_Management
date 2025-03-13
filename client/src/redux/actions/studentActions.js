@@ -54,20 +54,42 @@ export const getSubject = (department, year) => async (dispatch) => {
   }
 };
 
-export const getTestResult =
-  (department, year, section) => async (dispatch) => {
-    try {
-      const formData = {
-        department,
-        year,
-        section,
-      };
-      const { data } = await api.getTestResult(formData);
-      dispatch({ type: TEST_RESULT, payload: data });
-    } catch (error) {
-      dispatch({ type: SET_ERRORS, payload: error.response.data });
-    }
-  };
+// export const getTestResult =
+//   (department, year, section) => async (dispatch) => {
+//     try {
+//       const formData = {
+//         department,
+//         year,
+//         section,
+//       };
+//       const { data } = await api.getTestResult(formData);
+//       console.log(formData);
+//       dispatch({ type: TEST_RESULT, payload: data });
+//     } catch (error) {
+//       dispatch({ type: SET_ERRORS, payload: error.response.data });
+//     }
+//   };
+export const getTestResult = (department, year, section) => async (dispatch) => {
+  try {
+    const formData = {
+      department,
+      year,
+      section,
+    };
+    
+    dispatch({ type: SET_ERRORS, payload: {} }); // Clear previous errors
+    
+    const { data } = await api.getTestResult(formData);
+    console.log("Test result data:", data);
+    dispatch({ type: TEST_RESULT, payload: data });
+    
+    return data; // Return data for chaining if needed
+  } catch (error) {
+    console.error("Error fetching test results:", error);
+    let errorData = error.response?.data || { message: "Failed to fetch test results" };
+    dispatch({ type: SET_ERRORS, payload: errorData });
+  }
+};
 
 export const getAttendance =
   (department, year, section) => async (dispatch) => {
